@@ -1,0 +1,103 @@
+<div>
+<div >
+  <h1 style="text-align:center">Employees List</h1>
+</div>
+<div class="add-new-button-div">
+<button (click)="createNewEmployeeRecord()" class="add-new-button">Add New Employee</button>
+</div>
+<div>
+<table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8 demo-table">
+  <ng-container matColumnDef="firstName">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>First Name</th>
+    <td mat-cell *matCellDef="let element"> {{element.firstName}} </td>
+  </ng-container>
+  <ng-container matColumnDef="lastName">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Last Name </th>
+    <td mat-cell *matCellDef="let element"> {{element.lastName}} </td>
+  </ng-container>
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Id </th>
+    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+  </ng-container>
+  <ng-container matColumnDef="product">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Product </th>
+    <td mat-cell *matCellDef="let element"> {{element.product}} </td>
+  </ng-container>
+  <ng-container matColumnDef="level">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Level </th>
+    <td mat-cell *matCellDef="let element"> {{element.level}} </td>
+  </ng-container>
+  <ng-container matColumnDef="reportingTo">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Reporting To </th>
+    <td mat-cell *matCellDef="let element"> {{element.reportingTo}} </td>
+  </ng-container>
+  <ng-container matColumnDef="delete">
+    <th mat-header-cell *matHeaderCellDef> Delete </th>
+    <td mat-cell *matCellDef="let element" (click)="deleteEmployeeRecord(element.id)"> <mat-icon aria-hidden="false" aria-label="Example delete icon">delete</mat-icon> </td>
+  </ng-container>
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selectEmployee(row.id)"></tr>
+</table>
+</div>
+</div>
+<!-- <app-employees [employeeDetails]="selectedEmployee" *ngIf="selectedEmployee"></app-employees> -->
+<div *ngIf="showEmployeeDetails == true">
+<h1>Employee Details</h1>
+<div>
+  <div class="details-main-dev">
+  <div class="details-label-div">
+    <label>First Name :</label>
+  </div>
+  <div>
+    <input type="text" required [(ngModel)]="selectedEmployee.firstName">
+  </div>
+</div>
+<div class="details-main-dev">
+  <div class="details-label-div">
+    <label>Last Name :</label>
+  </div>
+  <div>
+    <input type="text" required [(ngModel)]="selectedEmployee.lastName">
+  </div>
+</div>
+  <!-- <div class="details-main-dev">
+    <div class="details-label-div">
+    <label>Id :</label>
+  </div>
+  <div>
+    <input type="text" required [(ngModel)]="selectedEmployee.id">
+  </div>
+</div> -->
+  <div class="details-main-dev">
+    <div class="details-label-div">
+    <label>Level :</label>
+  </div>
+  <div>
+    <input type="text" required [(ngModel)]="selectedEmployee.level">
+  </div>
+</div>
+  <div class="details-main-dev">
+    <div class="details-label-div">
+    <label>Product :</label>
+  </div>
+  <div>
+    <input type="text" required [(ngModel)]="selectedEmployee.product">
+  </div>
+</div>
+  <div class="details-main-dev">
+    <div class="details-label-div">
+    <label>Reporting To :</label>
+  </div>
+  <div>
+    <input type="text" required [(ngModel)]="selectedEmployee.reportingTo">
+  </div>
+</div>
+  <div *ngIf="isSaveNewRecord">
+    <button style="margin-left:300px" (click)="saveEmployeeDetails()">Save</button>
+  </div>
+  <div *ngIf="!isSaveNewRecord">
+    <button style="margin-left:300px" (click)="updateEmployeeDetails()">Update</button>
+  </div>
+</div>
+</div>
+

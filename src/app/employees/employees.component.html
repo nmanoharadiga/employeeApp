@@ -1,0 +1,30 @@
+<h1>Employee Details</h1>
+<div>
+  <div>
+    First Name :
+    <input type="text" required [(ngModel)]="employeeDetails.firstName">
+  </div>
+  <div>
+    Last Name :
+    <input type="text" required [(ngModel)]="employeeDetails.lastName">
+  </div>
+  <div>
+    Id :
+    <input type="text" required [(ngModel)]="employeeDetails.id">
+  </div>
+  <div>
+    Level :
+    <input type="text" required [(ngModel)]="employeeDetails.level">
+  </div>
+  <div>
+    Product :
+    <input type="text" required [(ngModel)]="employeeDetails.product">
+  </div>
+  <div>
+    Reporting To :
+    <input type="text" required [(ngModel)]="employeeDetails.reportingTo">
+  </div>
+  <div>
+    <button (click)="saveEmployeeDetails()">Save</button>
+  </div>
+</div>
